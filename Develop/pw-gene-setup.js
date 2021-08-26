@@ -1,19 +1,38 @@
-var x = 20; //x is the number of characters in pw
+// var x = 20; //x is the number of characters in pw
 //booleans returned from user determines the pwlist array
-var a = true; //uppercase
-var b = true; //number
-var c = true; //special char
+// var a = true; //uppercase
+// var b = true; //number
+// var c = false; //special char
+// var d = false; //lowercase
+
+
+var generateBtn = document.querySelector("#generate");
 
 function pwgenerator() {
-  let upper = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  let lower = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+  let upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
+  let lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
   let num = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-  let spchar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
+  let spchar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "="];
+
   //* Creating list of characters for password
   let pwlist = [];
 
-  //x is between x and 128 chars
-  if (x >= 8 && x <= 128) {
+
+  var length = prompt("How long would you like your password to be?");
+
+  //length is between 8 and 128 chars
+  if (length >= 8 && length <= 128) {
+    //ask the user what characters to include
+    var a = confirm("Would you like to use lower case characters?");
+    var b = confirm("Would you like to use upper case characters?");
+    var c = confirm("Would you like to use numeric characters?");
+    var d = confirm("Would you like to use special characters?");
+
+    if (!a && !b && !c && !d) {
+      alert("At least one character type must be selected"); return ""
+    };
+
     //Makes a pwlist of characters the pw generator will pull from
 
     //uppercase true/false
@@ -25,18 +44,21 @@ function pwgenerator() {
     //special chars true/false
     c == true ? (pwlist = [...spchar, ...pwlist]) : "";
 
-    //lowercase is always included
-    pwlist = [...lower, ...pwlist];
+    //special chars true/false
+    d == true ? (pwlist = [...lower, ...pwlist]) : "";
+
+
   } else {
-    return `${x} is not between 8 and 128`;
+    alert(`${length} is not between 8 and 128`);
   }
 
   //* Generating the Password
-  //I need to pick a random number between 0 and pw list length, x times to put into pwlist[]
+  //I need to pick a random number between 0 and pwlist length, x times to put into pwlist[]
   let l = pwlist.length;
   let generatedpw = "";
+
   function pwmaker() {
-    for (let i = 0; i < x; i++) {
+    for (let i = 0; i < length; i++) {
       //n = random number that will be plugged into pwlist[n] n = number between 0 and l
       let min = 0;
       let max = l;
@@ -44,25 +66,39 @@ function pwgenerator() {
       //use n as a index to call an array value that is added into generated pw
       generatedpw += pwlist[n];
     }
-  }
+  };
+
 
   //* Conditions checker
-  //if true/true invoke into for()loop again; if false check next condition
+  //I want to check to make sure the generatedpw meets all parameters set by the user
+  //if true/true run into pwmaker function again; if true/false check next condition: if false/false check next condition
+  //if any characters of .some is included in the generatedpw returns true
 
-  //checks to see if the generated pw uppercase character
-  a !== false && !upper.some((r) => generatedpw.includes(r))
-    ? pwmaker()
-    : //checks to see if the generated pw number
-    b !== false && !num.some((r) => generatedpw.includes(r))
-      ? pwmaker()
-      : //checks to see if the generated pw contains special character
-      c !== false && !spchar.some((r) => generatedpw.includes(r))
-        ? pwmaker()
-        : //if all conditions are met returns generated pw
-        generatedpw;
+  //checks to see if the generated pw contains uppercase character
+  while (a == true && !upper.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
+  //checks to see if the generated pw contains number
+  while (b == true && !num.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
+  //checks to see if the generated pw contains special character
+  while (c == true && !spchar.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
+  //checks to see if generated pw contains lowercase
+  while (d == true && !lower.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
 
-  return generatedpw;
-  //if all conditions are met then return generated password
+
+  //if all conditions are met returns generatedpw
+  return generatedpw
+
 }
 
-console.log(pwgenerator());
+// Write password to the #password input
+function writePassword() {
+  // What is the difference between return and console log?
+  // What happens if we console log our password instead of returning it?
+  var password = pwgenerator();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
+
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
