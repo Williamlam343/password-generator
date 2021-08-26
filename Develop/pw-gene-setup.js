@@ -22,13 +22,18 @@ function pwgenerator() {
   var length = prompt("How long would you like your password to be? (between 8-128 characters)");
 
   //length is between 8 and 128 chars
-  if (length >= 8 && length <= 128) {
+  if (length == "tofu" || length >= 8 && length <= 128) {
+
     //ask the user what characters to include
+    if (length == "tofu") { alert(`${length} is a boomer`); return "" }
+
+
     var a = confirm("Would you like to use upper case characters?");
     var b = confirm("Would you like to use numeric characters?");
     var c = confirm("Would you like to use special characters?");
     var d = confirm("Would you like to use lower characters?");
 
+    //if no characters is selected alert to start over
     if (!a && !b && !c && !d) {
       alert("At least one character type must be selected"); return ""
     };
@@ -67,8 +72,6 @@ function pwgenerator() {
       generatedpw += pwlist[n];
     }
   };
-
-
   //* Conditions checker
   //I want to check to make sure the generatedpw meets all parameters set by the user
   //if true/true run into pwmaker function again; if true/false check next condition: if false/false check next condition
@@ -82,7 +85,6 @@ function pwgenerator() {
   while (c == true && !spchar.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
   //checks to see if generated pw contains lowercase
   while (d == true && !lower.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
-
 
   //if all conditions are met returns generatedpw
   return generatedpw
