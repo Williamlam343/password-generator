@@ -35,16 +35,16 @@ function pwgenerator() {
 
     //Makes a pwlist of characters the pw generator will pull from
 
-    //uppercase true/false
+    //uppercase true if true adds upper into pwlist
     a == true ? (pwlist = [...upper, ...pwlist]) : "";
 
-    //numbers true/false
+    //numbers true if true adds num into pwlist
     b == true ? (pwlist = [...num, ...pwlist]) : "";
 
-    //special chars true/false
+    //special char if true adds spchar in pwlist
     c == true ? (pwlist = [...spchar, ...pwlist]) : "";
 
-    //special chars true/false
+    //lower if true adds lower into pwlist
     d == true ? (pwlist = [...lower, ...pwlist]) : "";
 
 
