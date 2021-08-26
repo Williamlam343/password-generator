@@ -25,7 +25,7 @@ function pwgenerator() {
   if (length == "tofu" || length >= 8 && length <= 128) {
 
     //ask the user what characters to include
-    if (length == "tofu") { alert(`${lengeth} is a boomer`); return "" }
+    if (length == "tofu") { alert(`${length} is a boomer`); return "" }
 
 
     var upperCase = confirm("Would you like to use upper case characters?");
