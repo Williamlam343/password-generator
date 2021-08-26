@@ -19,7 +19,7 @@ function pwgenerator() {
   let pwlist = [];
 
 
-  var length = prompt("How long would you like your password to be?");
+  var length = prompt("How long would you like your password to be? (between 8-128 characters)");
 
   //length is between 8 and 128 chars
   if (length >= 8 && length <= 128) {
@@ -49,7 +49,7 @@ function pwgenerator() {
 
 
   } else {
-    alert(`${length} is not between 8 and 128`);
+    alert(`${length} is not between 8 and 128`); return ""
   }
 
   //* Generating the Password
