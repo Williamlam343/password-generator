@@ -28,10 +28,10 @@ function pwgenerator() {
     if (length == "tofu") { alert(`${length} is a boomer`); return "" }
 
 
-    var upperCase = confirm("Would you like to use upper case characters?");
+    var upperCase = confirm("Would you like to use uppercase characters?");
     var numeric = confirm("Would you like to use numeric characters?");
     var spCharacter = confirm("Would you like to use special characters?");
-    var lowerCase = confirm("Would you like to use lower characters?");
+    var lowerCase = confirm("Would you like to use lowercase characters?");
 
     //if no characters is selected alert to start over
     if (!upperCase && !numeric && !spCharacter && !lowerCase) {
