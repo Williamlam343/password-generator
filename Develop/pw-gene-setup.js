@@ -24,10 +24,10 @@ function pwgenerator() {
   //length is between 8 and 128 chars
   if (length >= 8 && length <= 128) {
     //ask the user what characters to include
-    var a = confirm("Would you like to use lower case characters?");
-    var b = confirm("Would you like to use upper case characters?");
-    var c = confirm("Would you like to use numeric characters?");
-    var d = confirm("Would you like to use special characters?");
+    var a = confirm("Would you like to use upper case characters?");
+    var b = confirm("Would you like to use numeric characters?");
+    var c = confirm("Would you like to use special characters?");
+    var d = confirm("Would you like to use lower characters?");
 
     if (!a && !b && !c && !d) {
       alert("At least one character type must be selected"); return ""
