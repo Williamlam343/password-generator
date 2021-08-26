@@ -25,13 +25,13 @@ function pwgenerator() {
   if (length == "tofu" || length >= 8 && length <= 128) {
 
     //ask the user what characters to include
-    if (length == "tofu") { alert(`${length} is a boomer`); return "" }
+    if (length == "tofu") { alert(`${lengeth} is a boomer`); return "" }
 
 
-    var a = confirm("Would you like to use upper case characters?");
-    var b = confirm("Would you like to use numeric characters?");
-    var c = confirm("Would you like to use special characters?");
-    var d = confirm("Would you like to use lower characters?");
+    var upperCase = confirm("Would you like to use upper case characters?");
+    var numeric = confirm("Would you like to use numeric characters?");
+    var spCharacter = confirm("Would you like to use special characters?");
+    var lowerCase = confirm("Would you like to use lower characters?");
 
     //if no characters is selected alert to start over
     if (!a && !b && !c && !d) {
@@ -41,16 +41,16 @@ function pwgenerator() {
     //Makes a pwlist of characters the pw generator will pull from
 
     //uppercase true if true adds upper into pwlist
-    a == true ? (pwlist = [...upper, ...pwlist]) : "";
+    upperCase == true ? (pwlist = [...upper, ...pwlist]) : "";
 
     //numbers true if true adds num into pwlist
-    b == true ? (pwlist = [...num, ...pwlist]) : "";
+    numeric == true ? (pwlist = [...num, ...pwlist]) : "";
 
     //special char if true adds spchar in pwlist
-    c == true ? (pwlist = [...spchar, ...pwlist]) : "";
+    spChar == true ? (pwlist = [...spchar, ...pwlist]) : "";
 
     //lower if true adds lower into pwlist
-    d == true ? (pwlist = [...lower, ...pwlist]) : "";
+    lowerCase == true ? (pwlist = [...lower, ...pwlist]) : "";
 
 
   } else {
@@ -78,13 +78,13 @@ function pwgenerator() {
   //if any characters of .some is included in the generatedpw returns true
 
   //checks to see if the generated pw contains uppercase character
-  while (a == true && !upper.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
+  while (upperCase == true && !upper.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
   //checks to see if the generated pw contains number
-  while (b == true && !num.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
+  while (numeric == true && !num.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
   //checks to see if the generated pw contains special character
-  while (c == true && !spchar.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
+  while (spCharacter == true && !spchar.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
   //checks to see if generated pw contains lowercase
-  while (d == true && !lower.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
+  while (lowerCase == true && !lower.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
 
   //if all conditions are met returns generatedpw
   return generatedpw
