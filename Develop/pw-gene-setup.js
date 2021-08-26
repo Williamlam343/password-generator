@@ -34,7 +34,7 @@ function pwgenerator() {
     var lowerCase = confirm("Would you like to use lower characters?");
 
     //if no characters is selected alert to start over
-    if (!a && !b && !c && !d) {
+    if (!upperCase && !numeric && !spCharacter && !lowerCase) {
       alert("At least one character type must be selected"); return ""
     };
 
@@ -93,14 +93,11 @@ function pwgenerator() {
 
 // Write password to the #password input
 function writePassword() {
-  // What is the difference between return and console log?
-  // What happens if we console log our password instead of returning it?
   var password = pwgenerator();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
