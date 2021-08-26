@@ -47,7 +47,7 @@ function pwgenerator() {
     numeric == true ? (pwlist = [...num, ...pwlist]) : "";
 
     //special char if true adds spchar in pwlist
-    spChar == true ? (pwlist = [...spchar, ...pwlist]) : "";
+    spCharacter == true ? (pwlist = [...spchar, ...pwlist]) : "";
 
     //lower if true adds lower into pwlist
     lowerCase == true ? (pwlist = [...lower, ...pwlist]) : "";
