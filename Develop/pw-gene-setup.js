@@ -71,15 +71,9 @@ function pwgenerator() {
   //if true/true run into pwmaker function again; if true/false check next condition: if false/false check next condition
   //if any characters of .some is included in the generatedpw returns true
 
-  //checks to see if the generated pw contains uppercase character
-  while (upperCase == true && !upper.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
-  //checks to see if the generated pw contains number
-  while (numeric == true && !num.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
-  //checks to see if the generated pw contains special character
-  while (spCharacter == true && !spchar.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
-  //checks to see if generated pw contains lowercase
-  while (lowerCase == true && !lower.some((r) => generatedpw.includes(r))) { generatedpw = ""; pwmaker(); };
 
+  //checks to see if the generatedpw conditions all characters user set
+  while (a == true && !upper.some(r => generatedpw.includes(r)) || (b == true && !num.some(r => generatedpw.includes(r)) || c == true && !spchar.some(r => generatedpw.includes(r)) || d == true && !lower.some(r => generatedpw.includes(r)))) { generatedpw = ""; pwmaker(); };
   //if all conditions are met returns generatedpw
   return generatedpw
 
