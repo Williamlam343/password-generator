@@ -1,11 +1,4 @@
-// var x = 20; //x is the number of characters in pw
-//booleans returned from user determines the pwlist array
-// var a = true; //uppercase
-// var b = true; //number
-// var c = false; //special char
-// var d = false; //lowercase
-
-
+//targets the generate button
 var generateBtn = document.querySelector("#generate");
 
 function pwgenerator() {
@@ -16,6 +9,7 @@ function pwgenerator() {
   let spchar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "="];
 
   //* Creating list of characters for password
+
   let pwlist = [];
 
 
@@ -40,13 +34,13 @@ function pwgenerator() {
 
     //Makes a pwlist of characters the pw generator will pull from
 
-    //uppercase true if true adds upper into pwlist
+    //uppercase if true adds upper into pwlist
     upperCase == true ? (pwlist = [...upper, ...pwlist]) : "";
 
-    //numbers true if true adds num into pwlist
+    //numbers if true adds num into pwlist
     numeric == true ? (pwlist = [...num, ...pwlist]) : "";
 
-    //special char if true adds spchar in pwlist
+    //specialchar if true adds spchar in pwlist
     spCharacter == true ? (pwlist = [...spchar, ...pwlist]) : "";
 
     //lower if true adds lower into pwlist
@@ -65,13 +59,13 @@ function pwgenerator() {
   function pwmaker() {
     for (let i = 0; i < length; i++) {
       //n = random number that will be plugged into pwlist[n] n = number between 0 and l
-      let min = 0;
       let max = l;
-      n = Math.floor(Math.random() * (min - max)) + max;
+      n = Math.floor(Math.random() * max);
       //use n as a index to call an array value that is added into generated pw
       generatedpw += pwlist[n];
     }
   };
+
   //* Conditions checker
   //I want to check to make sure the generatedpw meets all parameters set by the user
   //if true/true run into pwmaker function again; if true/false check next condition: if false/false check next condition
